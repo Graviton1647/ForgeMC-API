@@ -47,7 +47,8 @@ dependencies {
     // Nitrite database
     compile 'org.dizitart:nitrite:1.0'
 
-    compile fileTree(dir: 'libs', include: '*.jar')
+    compile 'com.github.Graviton1647:BountifulAPI:1.4.1'
+
 
 }
 
