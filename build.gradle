@@ -47,8 +47,6 @@ dependencies {
     // Nitrite database
     compile 'org.dizitart:nitrite:1.0'
 
-    compile 'com.github.Graviton1647:BountifulAPI:1.4.1'
-
 
 }
 
