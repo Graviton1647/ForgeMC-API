@@ -21,8 +21,8 @@ abstract class Menu(var name : String, private val rows : Int, private val playe
     fun open() {
         inv = Bukkit.createInventory(this,9 * rows,name)
         if(!items.isNullOrEmpty()) {
-            repeat(9 * rows) {
-                inventory.setItem(it, createGuiItem(items.find { itm -> itm.slot == it }!!))
+            items.forEach {
+                inventory.setItem(it.slot, createGuiItem(it))
             }
         }
         playerMenu.owner.openInventory(inventory)
@@ -44,5 +44,14 @@ abstract class Menu(var name : String, private val rows : Int, private val playe
         }
         return item
     }
+
+    open fun setFillerGlass() {
+        for (i in 0 until 9 * rows) {
+            if (inventory.getItem(i) == null) {
+                inventory.setItem(i, filler)
+            }
+        }
+    }
+
 
 }
