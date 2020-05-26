@@ -1,6 +1,5 @@
 package org.forgemc.api.player
 
-import com.connorlinfoot.bountifulapi.BountifulAPI
 import org.bukkit.ChatColor
 import org.bukkit.Location
 import org.bukkit.Material
@@ -8,23 +7,25 @@ import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.scheduler.BukkitRunnable
 import org.forgemc.api.ForgePlugin
+import org.forgemc.api.ForgePlugin.Companion.playerMenu
+import org.forgemc.api.ui.gui.PlayerMenu
 
+
+fun Player.getMenu() : PlayerMenu {
+    val menu : PlayerMenu
+    return if(playerMenu.containsKey(player)) {
+        playerMenu[player]!!
+    } else {
+        menu = PlayerMenu(player)
+        playerMenu[player] = menu
+        menu
+    }
+}
 
 fun Player.message(vararg message : String) {
+
     message.forEach {
         sendMessage(ChatColor.translateAlternateColorCodes('&',it))
-    }
-}
-
-fun Player.sendActionBar(duration : Int = 0,vararg message : String) {
-    message.forEach {
-        BountifulAPI.sendActionBar(player,it,duration)
-    }
-}
-
-fun Player.sendGlobalActionBar(duration : Int = 0, vararg message : String) {
-    message.forEach {
-        BountifulAPI.sendActionBarToAllPlayers(it,duration)
     }
 }
 
