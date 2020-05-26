@@ -14,8 +14,6 @@ import java.util.logging.Level
 
 object EventLoader {
 
-    val logger = KotlinLogging.logger { }
-
     val EVENTS: MutableMap<String, Listener> = HashMap()
 
     /**

@@ -63,6 +63,11 @@ object CommandLoader {
         }
     }
 
+
+    /**
+     *  register commands that have the [MinecraftCommand] annotation
+     */
+
     fun register(fallback: String, command: BukkitCommand) {
         try {
             val bukkitCommandMap: Field = Bukkit.getServer().javaClass.getDeclaredField("commandMap")
