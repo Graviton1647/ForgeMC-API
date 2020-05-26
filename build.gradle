@@ -32,13 +32,10 @@ allprojects {
 }
 
 apply plugin: 'kotlin'
-group 'org.example'
-version '1.0-SNAPSHOT'
-
-
+version '3.1'
 
 dependencies {
-    compileOnly "org.bukkit:bukkit:${bukkitVersion}"
+    implementation "org.bukkit:bukkit:${bukkitVersion}"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
     // Logging
@@ -54,7 +51,6 @@ dependencies {
 
 
 }
-
 
 task buildJar(type: Jar) {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
