@@ -50,6 +50,7 @@ dependencies {
 
 }
 
-jar.from {
-    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+task buildJar(type: Jar) {
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
 }
