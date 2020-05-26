@@ -46,9 +46,9 @@ abstract class Menu(var name : String, private val rows : Int, private val playe
     }
 
     open fun setFillerGlass() {
-        for (i in 0 until 9 * rows) {
-            if (inventory.getItem(i) == null) {
-                inventory.setItem(i, filler)
+        repeat(9 * rows) {
+            if (inventory.getItem(it) == null) {
+                inventory.setItem(it, filler)
             }
         }
     }

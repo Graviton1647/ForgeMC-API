@@ -24,7 +24,6 @@ abstract class ForgePlugin : JavaPlugin() {
     override fun onEnable() {
         plugin = this
         logger.info { "Starting ${this.name}" }
-
         val time =  measureTimeMillis {
             DatabaseManager.init("$dataFolder//data.db")
             EventLoader.load(this)
