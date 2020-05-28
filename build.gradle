@@ -5,11 +5,13 @@ buildscript {
         maven { url "https://jitpack.io" }
         maven { url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/" }
         mavenCentral()
+
     }
 
     dependencies {
         classpath "org.jetbrains.dokka:dokka-gradle-plugin:0.10.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'net.sf.proguard:proguard-gradle:5.3.3'
     }
 }
 
@@ -54,3 +56,4 @@ task buildJar(type: Jar) {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
+
