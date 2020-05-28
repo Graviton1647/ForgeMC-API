@@ -1,6 +1,7 @@
 package org.forgemc.api.ui.gui
 
 import org.bukkit.Bukkit
+import org.bukkit.ChatColor
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.inventory.InventoryOpenEvent
@@ -19,7 +20,7 @@ abstract class Menu(var name : String, private val rows : Int, private val playe
     abstract var filler : ItemStack
 
     fun open() {
-        inv = Bukkit.createInventory(this,9 * rows,name)
+        inv = Bukkit.createInventory(this,9 * rows, ChatColor.translateAlternateColorCodes('&',name))
         if(!items.isNullOrEmpty()) {
             items.forEach {
                 inventory.setItem(it.slot, createGuiItem(it))
