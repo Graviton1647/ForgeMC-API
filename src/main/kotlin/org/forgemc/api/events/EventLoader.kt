@@ -1,6 +1,5 @@
 package org.forgemc.api.events
 
-import mu.KotlinLogging
 import org.bukkit.event.Listener
 import org.bukkit.plugin.java.JavaPlugin
 import org.reflections.Reflections
@@ -19,8 +18,9 @@ object EventLoader {
     /**
      *  Loads events that have the [MinecraftEvent] annotation
      */
+
     fun load(plugin: JavaPlugin) {
-        val logger: Logger = Logger.getLogger("org.reflections.Reflections")
+        val logger: Logger = Logger.getLogger("org.reflections")
         logger.level = Level.OFF
 
         val config = ConfigurationBuilder()

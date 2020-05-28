@@ -16,7 +16,7 @@ import java.util.logging.Logger
 import java.lang.reflect.Field
 import java.util.logging.Level
 
-
+@SuppressWarnings("unused")
 object CommandLoader {
 
     val logger = KotlinLogging.logger { }
@@ -27,7 +27,7 @@ object CommandLoader {
      *  Loads commands that have the [MinecraftCommand] annotation
      */
     fun load(plugin: JavaPlugin) {
-        val logger: Logger = Logger.getLogger("org.reflections.Reflections")
+        val logger: Logger = Logger.getLogger("org.reflections")
         logger.level = Level.OFF
 
         val config = ConfigurationBuilder()

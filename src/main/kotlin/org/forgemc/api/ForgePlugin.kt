@@ -24,6 +24,7 @@ abstract class ForgePlugin : JavaPlugin() {
     override fun onEnable() {
         plugin = this
         logger.info { "Starting ${this.name}" }
+        makeData()
         val time =  measureTimeMillis {
             DatabaseManager.init("$dataFolder//data.db")
             EventLoader.load(this)
@@ -41,6 +42,16 @@ abstract class ForgePlugin : JavaPlugin() {
         }
         logger.info { "Stopped ${this.name}" }
     }
+
+    /**
+     * Make the data folder if it does not exists
+     */
+    private fun makeData() {
+        if(!dataFolder.exists()) {
+            dataFolder.mkdirs()
+        }
+    }
+
 
 
     /**
