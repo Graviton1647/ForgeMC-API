@@ -9,6 +9,7 @@ import org.forgemc.api.events.EventLoader
 import org.forgemc.api.ui.gui.PlayerMenu
 import kotlin.system.measureTimeMillis
 
+
 abstract class ForgePlugin : JavaPlugin() {
 
     companion object {
