@@ -36,10 +36,12 @@ class MenuListener : Listener {
 
     @EventHandler
     fun onMenuOpen(event : InventoryOpenEvent) {
-        val holder : InventoryHolder = event.inventory.holder
-        if (holder is Menu) {
-            val menu : Menu = holder
-            menu.handleOpen(event)
+        if(event.inventory.holder != null) {
+            val holder : InventoryHolder = event.inventory.holder
+            if (holder is Menu) {
+                val menu : Menu = holder
+                menu.handleOpen(event)
+            }
         }
     }
 
