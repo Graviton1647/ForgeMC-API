@@ -45,6 +45,9 @@ dependencies {
     // Refelctions
     compile 'org.reflections:reflections:0.9.12'
 
+    // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+
 
     // Nitrite database
     compile 'org.dizitart:nitrite:1.0'
