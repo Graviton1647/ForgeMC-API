@@ -40,6 +40,7 @@ abstract class ForgePlugin : JavaPlugin() {
         playerMenu.forEach {
             it.value.owner.closeInventory()
         }
+        playerMenu.clear()
         logger.info { "Stopped ${this.name}" }
     }
 
