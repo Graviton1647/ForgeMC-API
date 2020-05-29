@@ -47,8 +47,8 @@ fun Player.sendTitle(message : String, sub : String = "", fadeIn : Int = 10, sta
     sendTitle(ChatColor.translateAlternateColorCodes('&',message),sub,fadeIn,stay,fadeOut)
 }
 
-fun Player.inRange(location : Location, distance : Double) : Boolean {
-    return location.distance(location) <= distance
+fun Player.inRange(otherlocation : Location, distance : Double) : Boolean {
+    return location.distance(otherlocation) <= distance
 }
 
 fun Player.teleport(
