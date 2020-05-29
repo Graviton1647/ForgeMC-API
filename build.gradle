@@ -43,7 +43,7 @@ dependencies {
     compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
 
     // Refelctions
-    compile 'org.reflections:reflections:0.9.10'
+    compile 'com.github.Graviton1647:reflections:0.9.16'
 
 
     // Nitrite database
