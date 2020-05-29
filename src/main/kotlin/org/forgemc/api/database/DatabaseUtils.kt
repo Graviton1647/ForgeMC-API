@@ -6,6 +6,7 @@ import org.dizitart.no2.Document
 
 fun Document.getString(name: String) = get(name, String::class.java)
 fun Document.getInt(name: String) = get(name, Integer::class.java).toInt()
+fun Document.getBoolean(name: String) = get(name, Boolean::class.java) as Boolean
 fun Document.getShort(name: String) = get(name, java.lang.Short::class.java).toShort()
 fun Document.getDouble(name: String) = get(name, java.lang.Double::class.java).toDouble()
 fun Document.getFloat(name: String) = get(name, java.lang.Float::class.java).toFloat()

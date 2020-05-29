@@ -16,7 +16,7 @@ class MenuListener : Listener {
     fun onMenuClick(event : InventoryClickEvent) {
         val player = event.whoClicked as Player
         val holder : InventoryHolder = event.inventory.holder
-        if (holder is Menu && holder != null) {
+        if (holder is Menu) {
             event.isCancelled = true
             if(event.currentItem != null) {
                 val menu : Menu = holder
@@ -28,7 +28,7 @@ class MenuListener : Listener {
     @EventHandler
     fun onMenuClose(event : InventoryCloseEvent) {
         val holder : InventoryHolder = event.inventory.holder
-        if (holder is Menu && holder != null) {
+        if (holder is Menu) {
             val menu : Menu = holder
             menu.handleClose(event)
         }
@@ -37,7 +37,7 @@ class MenuListener : Listener {
     @EventHandler
     fun onMenuOpen(event : InventoryOpenEvent) {
         val holder : InventoryHolder = event.inventory.holder
-        if (holder is Menu && holder != null) {
+        if (holder is Menu) {
             val menu : Menu = holder
             menu.handleOpen(event)
         }
