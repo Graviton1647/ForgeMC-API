@@ -40,7 +40,7 @@ object CommandLoader {
 
         val reflection = Reflections(config)
         val cds = reflection.getTypesAnnotatedWith(MinecraftCommand::class.java)
-
+        plugin.logger.info { "Registered ${cds.size} Commands." }
         cds.forEach {
             val annotation = it.getAnnotation(MinecraftCommand::class.java)
             if (!COMMANDS.contains(annotation.name)) {

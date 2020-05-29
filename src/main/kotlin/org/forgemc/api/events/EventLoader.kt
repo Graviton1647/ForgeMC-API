@@ -20,8 +20,6 @@ object EventLoader {
      */
 
     fun load(plugin: JavaPlugin) {
-        val logger: Logger = Logger.getLogger("org.reflections")
-        logger.level = Level.OFF
 
         val config = ConfigurationBuilder()
             .addScanners(
@@ -33,9 +31,10 @@ object EventLoader {
 
         val reflection = Reflections(config)
         val cds = reflection.getTypesAnnotatedWith(MinecraftEvent::class.java)
-
+        plugin.logger.info { "Registered ${cds.size} Events." }
         cds.forEach {
             val annotation = it.getAnnotation(MinecraftEvent::class.java)
+
             if (!EVENTS.contains(annotation.name)) {
                 try {
                     val instance = it.getConstructor().newInstance() as Listener
