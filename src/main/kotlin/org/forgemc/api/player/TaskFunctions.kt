@@ -11,7 +11,7 @@ import org.bukkit.scheduler.BukkitRunnable
  * @param plugin plugin instance
  * @param delay numbers of seconds to wait
  */
-fun delayBy(plugin : Plugin,delay : Int, task : () -> Unit ) {
+fun delayBy(plugin : Plugin,delay : Long, task : () -> Unit ) {
     object : BukkitRunnable() {
         override fun run() {
             task.invoke()
@@ -38,7 +38,7 @@ fun runTask(plugin : Plugin, task : () -> Unit ) {
  * @param delay numbers of seconds to wait
  */
 
-fun delayByWait(plugin : Plugin, wait : Int, delay : Int, task : () -> Unit ) {
+fun delayByWait(plugin : Plugin, wait : Long, delay : Long, task : () -> Unit ) {
     object : BukkitRunnable() {
         override fun run() {
             task.invoke()
