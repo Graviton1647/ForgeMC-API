@@ -4,6 +4,7 @@ import org.bukkit.Bukkit
 import org.bukkit.plugin.Plugin
 
 import org.bukkit.scheduler.BukkitRunnable
+import kotlin.concurrent.timerTask
 
 
 /**
@@ -11,10 +12,24 @@ import org.bukkit.scheduler.BukkitRunnable
  * @param plugin plugin instance
  * @param delay numbers of seconds to wait
  */
-fun delayBy(plugin : Plugin,delay : Long, task : () -> Unit ) {
+fun delayBy(plugin : Plugin,delay : Long, task : () -> Unit) {
     object : BukkitRunnable() {
         override fun run() {
             task.invoke()
+        }
+    }.runTaskLater(plugin, 20L * delay)
+}
+
+/**
+ * Delay an action by a number of seconds
+ * @param plugin plugin instance
+ * @param delay numbers of seconds to wait
+ */
+fun runOnce(plugin : Plugin,delay : Long, task : () -> Unit ) {
+    object : BukkitRunnable() {
+        override fun run() {
+            task.invoke()
+            cancel()
         }
     }.runTaskLater(plugin, 20L * delay)
 }
