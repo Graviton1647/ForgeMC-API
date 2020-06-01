@@ -5,6 +5,8 @@ import org.bukkit.Location
 import org.bukkit.Material
 
 import org.bukkit.entity.Player
+import org.bukkit.inventory.Inventory
+import org.bukkit.inventory.ItemStack
 import org.bukkit.scheduler.BukkitRunnable
 import org.forgemc.api.ForgePlugin
 import org.forgemc.api.ForgePlugin.Companion.playerMenu
@@ -67,6 +69,33 @@ fun Player.teleport(
         notSafe
     )
     findSafePlaceWorker.runTaskTimer(ForgePlugin.plugin, 1, 1)
+}
+
+
+fun Inventory.addItems(vararg items : ItemStack, player : Player) {
+    items.forEach { item ->
+        var spaces = 0
+        spaces += this.contents.filter { it == null }.map { 64 }.sum()
+
+        if(spaces > 0) {
+            addItem(item)
+        } else {
+            var toAdd = item.amount
+            contents.filterNotNull()
+                .filter { it.type == item.type }
+                .filter { it.amount < 64 }
+                .forEach { left ->
+                    val canAdd = (64 - left.amount).coerceAtMost(toAdd)
+                    left.amount += canAdd
+                    toAdd -= canAdd
+                }
+
+            if(toAdd > 0) {
+                item.amount = toAdd
+                player.world.dropItem(player.location, item)
+            }
+        }
+    }
 }
 
 

@@ -35,7 +35,7 @@ class MenuListener : Listener {
 
     @EventHandler
     fun onMenuOpen(event : InventoryOpenEvent) {
-        val holder : InventoryHolder = event.inventory.holder
+        val holder : InventoryHolder = event.inventory?.holder ?: return
         if (holder is Menu) {
             val menu : Menu = holder
             menu.handleOpen(event)
