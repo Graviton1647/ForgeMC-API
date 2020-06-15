@@ -5,16 +5,14 @@ import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.json.simple.JSONObject
 
-class ActionBar {
+class ActionBar(val text: String) {
 
     private var json: JSONObject
 
     /**
      * Constructs an [ActionBar] object based on plain text.
-     *
-     * @param text Text to display.
      */
-    constructor(text: String) {
+    init {
         Preconditions.checkNotNull(text)
         json = convert(text)
     }
