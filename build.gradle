@@ -35,7 +35,7 @@ apply plugin: 'kotlin'
 version '3.1'
 
 dependencies {
-    implementation "org.bukkit:bukkit:${bukkitVersion}"
+    compileOnly "org.bukkit:bukkit:${bukkitVersion}"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
     // Logging
