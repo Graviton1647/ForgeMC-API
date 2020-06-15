@@ -10,7 +10,7 @@ import org.forgemc.api.ui.gui.PlayerMenu
 import kotlin.system.measureTimeMillis
 
 
-abstract class ForgePlugin : JavaPlugin() {
+abstract class ForgePlugin(val database : Boolean) : JavaPlugin() {
 
     companion object {
 
@@ -27,7 +27,9 @@ abstract class ForgePlugin : JavaPlugin() {
         logger.info { "Starting ${this.name}" }
         makeData()
         val time =  measureTimeMillis {
-            DatabaseManager.init("$dataFolder//data.db")
+            if(database) {
+                DatabaseManager.init("$dataFolder//data.db")
+            }
             EventLoader.load(this)
             CommandLoader.load(this)
             start()
@@ -37,7 +39,9 @@ abstract class ForgePlugin : JavaPlugin() {
 
     override fun onDisable() {
         stop()
-        DatabaseManager.close()
+        if(database) {
+            DatabaseManager.close()
+        }
         playerMenu.forEach {
             it.value.owner.closeInventory()
         }
